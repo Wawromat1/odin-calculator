@@ -43,7 +43,7 @@ function divide(firstValue, secondValue) {
 
         clearDisplay();
 
-        return;
+        return 0;
     }
 
     return firstValue / secondValue;
