@@ -2,6 +2,28 @@ let currentInput = '';
 let currentOperation = '';
 let previousInput = '';
 
+window.addEventListener('keydown', (event) => {
+    if (event.key === '1') appendNumber('1');
+    if (event.key === '2') appendNumber('2');
+    if (event.key === '3') appendNumber('3');
+    if (event.key === '4') appendNumber('4');
+    if (event.key === '5') appendNumber('5');
+    if (event.key === '6') appendNumber('6');
+    if (event.key === '7') appendNumber('7');
+    if (event.key === '8') appendNumber('8');
+    if (event.key === '9') appendNumber('9');
+    if (event.key === '0') appendNumber('0');
+    if (event.key === 'Escape') clearDisplay();
+    if (event.key === 'Backspace') deleteLastInput();
+    if (event.key === '_') negate();
+    if (event.key === 'Enter') operate();
+    if (event.key === '/') appendOperation('/');
+    if (event.key === '*') appendOperation('*');
+    if (event.key === '-') appendOperation('-');
+    if (event.key === '+') appendOperation('+');
+    if (event.key === '.') appendDot();
+})
+
 function appendNumber(number) {
     currentInput += number;
 
@@ -10,7 +32,7 @@ function appendNumber(number) {
 
 function appendOperation(operation) {
     let current = parseFloat(currentInput).toString();
-    
+
     if (currentInput === '' && previousInput === '') return;
     if (currentOperation === '/' && current === '0') {
         clearDisplay();
