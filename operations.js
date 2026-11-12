@@ -9,8 +9,10 @@ function appendNumber(number) {
 }
 
 function appendOperation(operation) {
+    let current = parseFloat(currentInput).toString();
+    
     if (currentInput === '' && previousInput === '') return;
-    if (currentOperation === '/' && currentInput === '0') {
+    if (currentOperation === '/' && current === '0') {
         clearDisplay();
 
         return;
