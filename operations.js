@@ -10,6 +10,11 @@ function appendNumber(number) {
 
 function appendOperation(operation) {
     if (currentInput === '' && previousInput === '') return;
+    if (currentOperation === '/' && currentInput === '0') {
+        clearDisplay();
+
+        return;
+    }
 
     if (currentInput !== '') {
         operate();
@@ -18,7 +23,7 @@ function appendOperation(operation) {
     if (previousInput === '') {
         previousInput = currentInput;
     }
-    
+
     currentOperation = operation;
     currentInput = '';
     document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation}`;

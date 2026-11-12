@@ -18,11 +18,12 @@ body {
 
 #calculatorDisplay {
     text-align: right;
-    margin: 20px auto 10px auto;
+    margin: 0px auto 10px auto;
     color: black;
     text-align: right;
-    background-color: white;
+    background-color: whitesmoke;
     border: none;
+    border-bottom: 2px solid black;
     font-size: 30px;
     font-weight: 800;
     width: 100%;
