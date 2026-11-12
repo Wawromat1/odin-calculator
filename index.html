@@ -12,11 +12,11 @@
         <input type="text" id="calculatorDisplay" disabled></input>
         <div id="calculatorInput">
             <button class="inputBtn grey" onclick="clearDisplay()">AC</button>
-            <button class="inputBtn grey" onclick="deleteCurrentInput()">⌫</button>
-            <button class="inputBtn operator" onclick="appendOperation('/'), lastPressed()">/</button>
-            <button class="inputBtn operator" onclick="appendOperation('*'), lastPressed()">*</button>
-            <button class="inputBtn number" onclick="appendNumber('7'), lastPressed()">7</button>
-            <button class="inputBtn number" onclick="appendNumber('8'), lastPressed()">8</button>
+            <button class="inputBtn grey" onclick="deleteLastInput()">⌫</button>
+            <button class="inputBtn operator" onclick="appendOperation('/')">/</button>
+            <button class="inputBtn operator" onclick="appendOperation('*')">*</button>
+            <button class="inputBtn number" onclick="appendNumber('7')">7</button>
+            <button class="inputBtn number" onclick="appendNumber('8')">8</button>
             <button class="inputBtn number" onclick="appendNumber('9')">9</button>
             <button class="inputBtn operator" onclick="appendOperation('-')">-</button>
             <button class="inputBtn number" onclick="appendNumber('4')">4</button>

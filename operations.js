@@ -89,7 +89,7 @@ function clearDisplay() {
 function negate() {
     if (currentInput === '') return;
 
-    if (currentInput !== '') currentInput = parseFloat(currentInput) * -1;
+    if (currentInput !== '') currentInput = (parseFloat(currentInput) * -1).toString();
 
     document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
 }
@@ -102,4 +102,31 @@ function appendDot() {
     currentInput += '.';
 
     document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
+}
+
+function deleteLastInput() {
+    if (previousInput === '' && currentInput === '') return;
+
+    if (previousInput !== '' && currentOperation !== '' && currentInput !== '') {
+        currentInput = currentInput.slice(0, -1);
+
+        document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
+        return;
+    }
+
+    if (previousInput === '' && currentInput !== '') {
+        currentInput = currentInput.slice(0, -1);
+
+        document.getElementById('calculatorDisplay').value = currentInput;
+        return;
+    }
+
+    if (previousInput !== '' && currentOperation !== '' && currentInput === '') {
+        currentInput = previousInput;
+        previousInput = '';
+        currentOperation = '';
+
+        document.getElementById('calculatorDisplay').value = currentInput;
+        return;
+    }
 }
