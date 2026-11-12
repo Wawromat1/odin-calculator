@@ -2,22 +2,14 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
-    background-image: radial-gradient(
-        farthest-corner at 100% 0px,
-        springGreen 0% 0px,
-        black 60%
-    );
+    background-color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #calculatorFrame {
     padding: 20px;
     margin: auto;
-    background-image: radial-gradient(
-        farthest-corner at 0px 200px,
-        blue 0%,
-        #151515 30%
-    );
+    background-color: black;
     border-radius: 17%;
 }
 

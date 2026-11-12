@@ -1,5 +1,27 @@
-//basic math functions
+let currentInput = '';
+let currentOperation = '';
+let previousInput = '';
 
+function appendNumber(number) {
+    currentInput += number;
+
+    document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
+}
+
+function appendOperation(operation) {
+    if (currentInput === '') return;
+
+    if (currentInput !== '') {
+        operate();
+    }
+
+    currentOperation = operation;
+    previousInput = currentInput;
+    currentInput = '';
+    document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation}`;
+}
+
+//basic math functions
 function add(firstValue, secondValue) {
     return firstValue + secondValue;
 }
@@ -19,48 +41,46 @@ function divide(firstValue, secondValue) {
 }
 
 // operation function
+function operate() {
+    if (previousInput === '' || currentInput === '') return;
 
-function operate(firstValue, operator, secondValue) {
-    switch (operator) {
+    let result;
+    let prev = parseFloat(previousInput);
+    let current = parseFloat(currentInput);
+
+
+    switch (currentOperation) {
         case '+':
-            return add(firstValue, secondValue);
+            result = add(prev, current);
+            break;
         
         case '-':
-            return subtract(firstValue, secondValue);
+            result = subtract(prev, current);
+            break;
 
         case '*':
-            return multiply(firstValue, secondValue);
+            result = multiply(prev, current);
+            break;
 
         case '/':
-            return divide(firstValue, secondValue);
+            result = divide(prev, current);
+            break;
 
         default:
-            break;
+            return;
     }
+
+    currentInput = result.toString();
+    currentOperation = '';
+    previousInput = '';
+
+    document.getElementById('calculatorDisplay').value = currentInput;
 }
 
-// Elements
-const firstValue = document.getElementById('firstValue');
-const secondValue = document.getElementById('secondValue');
-const operator = document.getElementById('operator');
+function clearDisplay() {
+    currentInput = '';
+    previousInput = '';
+    currentOperation = '';
 
-const inputBtns = document.querySelectorAll('.inputBtn');
-
-inputBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        if (btn.classList.contains('number')) {
-            updateDisplayValue(firstValue.textContent, btn.textContent.trim());
-        }
-    });
-});
-
-// Button functionality
-function updateDisplayValue(element, btnValue) {
-    if (element === '0') {
-        if (btnValue === '0') return;
-        element = btnValue;
-        return;
-    }
-    
-    element += btnValue;
+    document.getElementById('calculatorDisplay').value = '';
 }
