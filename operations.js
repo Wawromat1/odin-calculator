@@ -65,7 +65,7 @@ function operate() {
 
                 clearDisplay();
 
-                break
+                return;
             }
 
             result = prev / current;
