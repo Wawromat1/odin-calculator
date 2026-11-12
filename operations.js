@@ -37,18 +37,6 @@ function multiply(firstValue, secondValue) {
     return firstValue * secondValue;
 }
 
-function divide(firstValue, secondValue) {
-    if (secondValue === 0) {
-        alert('bro... are u stupid?');
-
-        clearDisplay();
-
-        return 0;
-    }
-
-    return firstValue / secondValue;
-}
-
 // operation function
 function operate() {
     if (previousInput === '' || currentInput === '') return;
@@ -72,7 +60,15 @@ function operate() {
             break;
 
         case '/':
-            result = divide(prev, current);
+            if (current === 0) {
+                alert('bro... are u stupid?');
+
+                clearDisplay();
+
+                break
+            }
+
+            result = prev / current;
             break;
 
         default:
@@ -116,14 +112,18 @@ function deleteLastInput() {
     if (previousInput === '' && currentInput === '') return;
 
     if (previousInput !== '' && currentOperation !== '' && currentInput !== '') {
-        currentInput = currentInput.slice(0, -1);
+        if (currentInput.includes('-') && currentInput.length === 2) {
+            currentInput = '';
+        }else currentInput = currentInput.slice(0, -1);
 
         document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
         return;
     }
 
     if (previousInput === '' && currentInput !== '') {
-        currentInput = currentInput.slice(0, -1);
+        if (currentInput.includes('-') && currentInput.length === 2) {
+            currentInput = '';
+        }else currentInput = currentInput.slice(0, -1);
 
         document.getElementById('calculatorDisplay').value = currentInput;
         return;
