@@ -1,23 +1,32 @@
 body {
+    min-height: 100dvh;
     padding: 0;
     margin: 0;
     display: flex;
-    background-color: white;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #calculatorFrame {
     padding: 20px;
-    margin: auto;
-    background-color: black;
-    border-radius: 17%;
+    background-color: white;
+    width: min(90vw, 380px);
+    box-sizing: border-box;
 }
 
 #calculatorDisplay {
     text-align: right;
     margin: 20px auto 10px auto;
-    color: white;
+    color: black;
     text-align: right;
+    background-color: white;
+    border: none;
+    font-size: 30px;
+    font-weight: 800;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .operator {
@@ -26,5 +35,21 @@ body {
 
 #calculatorInput {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5px;
+}
+
+.inputBtn {
+    border: none;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.grey {
+    background-color: darkgrey;
+}
+
+.number {
+    background-color: blue;
+    color: white;
 }
