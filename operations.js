@@ -1,7 +1,6 @@
 let currentInput = '';
 let currentOperation = '';
 let previousInput = '';
-let lastInput = '';
 
 function appendNumber(number) {
     currentInput += number;
@@ -10,14 +9,17 @@ function appendNumber(number) {
 }
 
 function appendOperation(operation) {
-    if (currentInput === '') return;
+    if (currentInput === '' && previousInput === '') return;
 
     if (currentInput !== '') {
         operate();
     }
 
+    if (previousInput === '') {
+        previousInput = currentInput;
+    }
+    
     currentOperation = operation;
-    previousInput = currentInput;
     currentInput = '';
     document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation}`;
 }
@@ -36,7 +38,13 @@ function multiply(firstValue, secondValue) {
 }
 
 function divide(firstValue, secondValue) {
-    if (secondValue === 0) return 'bro... are u stupid?'
+    if (secondValue === 0) {
+        alert('bro... are u stupid?');
+
+        clearDisplay();
+
+        return;
+    }
 
     return firstValue / secondValue;
 }
@@ -95,11 +103,11 @@ function negate() {
 }
 
 function appendDot() {
-    if (currentInput === '') return;
+    if (currentInput === '') {
+        currentInput = '0.';
+    }
 
-    if (currentInput.includes('.')) return;
-    
-    currentInput += '.';
+    if (!currentInput.includes('.')) currentInput += '.';
 
     document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
 }
