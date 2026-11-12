@@ -1,6 +1,7 @@
 let currentInput = '';
 let currentOperation = '';
 let previousInput = '';
+let lastInput = '';
 
 function appendNumber(number) {
     currentInput += number;
@@ -83,4 +84,22 @@ function clearDisplay() {
     currentOperation = '';
 
     document.getElementById('calculatorDisplay').value = '';
+}
+
+function negate() {
+    if (currentInput === '') return;
+
+    if (currentInput !== '') currentInput = parseFloat(currentInput) * -1;
+
+    document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
+}
+
+function appendDot() {
+    if (currentInput === '') return;
+
+    if (currentInput.includes('.')) return;
+    
+    currentInput += '.';
+
+    document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
 }
