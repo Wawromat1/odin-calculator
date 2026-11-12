@@ -38,3 +38,29 @@ function operate(firstValue, operator, secondValue) {
             break;
     }
 }
+
+// Elements
+const firstValue = document.getElementById('firstValue');
+const secondValue = document.getElementById('secondValue');
+const operator = document.getElementById('operator');
+
+const inputBtns = document.querySelectorAll('.inputBtn');
+
+inputBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        if (btn.classList.contains('number')) {
+            updateDisplayValue(firstValue.textContent, btn.textContent.trim());
+        }
+    });
+});
+
+// Button functionality
+function updateDisplayValue(element, btnValue) {
+    if (element === '0') {
+        if (btnValue === '0') return;
+        element = btnValue;
+        return;
+    }
+    
+    element += btnValue;
+}

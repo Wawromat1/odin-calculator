@@ -22,13 +22,14 @@ body {
 }
 
 #calculatorDisplay {
+    text-align: right;
     margin: 20px auto 10px auto;
-}
-
-#input {
-    width: 100%;
     color: white;
     text-align: right;
+}
+
+.operator {
+    color: blue;
 }
 
 #calculatorInput {
