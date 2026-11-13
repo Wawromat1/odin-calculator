@@ -144,6 +144,7 @@ function clearDisplay() {
     currentInput = '';
     previousInput = '';
     currentOperation = '';
+    isResult = false;
 
     document.getElementById('calculatorDisplay').value = '';
 }
