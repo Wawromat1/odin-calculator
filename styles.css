@@ -3,6 +3,7 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: black;
@@ -53,4 +54,22 @@ body {
 .number {
     background-color: blue;
     color: white;
+}
+
+#label {
+    margin-top: 20px;
+    color: whitesmoke;
+    width: min(90vw, 380px);
+    box-sizing: border-box;
+    border: 1px solid grey;
+    text-align: center;
+    padding: 5px;
+}
+
+#label h3 {
+    margin-top: 5px;
+}
+
+#label p {
+    margin: 5px;
 }
