@@ -135,7 +135,7 @@ function negate() {
 function appendDot() {
     if (currentInput === '' || isResult === true) {
         currentInput = '0.';
-        
+
         isResult = false;
     }
 
@@ -145,6 +145,8 @@ function appendDot() {
 }
 
 function deleteLastInput() {
+    if (isResult === true) isResult = false;
+
     if (previousInput === '' && currentInput === '') return;
 
     if (previousInput !== '' && currentOperation !== '' && currentInput !== '') {
