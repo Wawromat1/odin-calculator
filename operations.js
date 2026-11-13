@@ -1,7 +1,11 @@
+// GLOBAL VARIABLES
+
 let currentInput = '';
 let currentOperation = '';
 let previousInput = '';
 let isResult = false;
+
+// KEYBOARD EVENT LISTENERS
 
 window.addEventListener('keydown', (event) => {
     if (event.key === '1') appendNumber('1');
@@ -24,6 +28,8 @@ window.addEventListener('keydown', (event) => {
     if (event.key === '+') appendOperation('+');
     if (event.key === '.') appendDot();
 })
+
+//APPEND FUNCTIONS
 
 function appendNumber(number) {
     if (isResult === true) {
@@ -59,7 +65,20 @@ function appendOperation(operation) {
     document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation}`;
 }
 
-//basic math functions
+function appendDot() {
+    if (currentInput === '' || isResult === true) {
+        currentInput = '0.';
+
+        isResult = false;
+    }
+
+    if (!currentInput.includes('.')) currentInput += '.';
+
+    document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
+}
+
+// MATH FUNKTIONS
+
 function add(firstValue, secondValue) {
     return firstValue + secondValue;
 }
@@ -72,7 +91,8 @@ function multiply(firstValue, secondValue) {
     return firstValue * secondValue;
 }
 
-// operation function
+// GENERAL OPERATIONG FUNKTION
+
 function operate() {
     if (previousInput === '' || currentInput === '') return;
 
@@ -118,6 +138,8 @@ function operate() {
     document.getElementById('calculatorDisplay').value = currentInput;
 }
 
+// FEATURE FUNCTIONS
+
 function clearDisplay() {
     currentInput = '';
     previousInput = '';
@@ -130,18 +152,6 @@ function negate() {
     if (currentInput === '') return;
 
     if (currentInput !== '') currentInput = (parseFloat(currentInput) * -1).toString();
-
-    document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
-}
-
-function appendDot() {
-    if (currentInput === '' || isResult === true) {
-        currentInput = '0.';
-
-        isResult = false;
-    }
-
-    if (!currentInput.includes('.')) currentInput += '.';
 
     document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
 }
