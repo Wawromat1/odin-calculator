@@ -110,7 +110,7 @@ function operate() {
             return;
     }
 
-    currentInput = Number(result.toPrecision(15)).toString();
+    currentInput = Number(result.toPrecision(10)).toString();
     currentOperation = '';
     previousInput = '';
     isResult = true;
