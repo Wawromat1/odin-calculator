@@ -39,6 +39,8 @@ function appendOperation(operation) {
 
     if (currentInput === '' && previousInput === '') return;
     if (currentOperation === '/' && current === '0') {
+        alert('bro... are u stupid?')
+
         clearDisplay();
 
         return;
