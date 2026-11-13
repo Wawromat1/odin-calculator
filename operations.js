@@ -1,6 +1,7 @@
 let currentInput = '';
 let currentOperation = '';
 let previousInput = '';
+let isResult = false;
 
 window.addEventListener('keydown', (event) => {
     if (event.key === '1') appendNumber('1');
@@ -25,8 +26,11 @@ window.addEventListener('keydown', (event) => {
 })
 
 function appendNumber(number) {
-    currentInput += number;
+    if (isResult === true) {
+        currentInput = number;
+    }else currentInput += number;
 
+    isResult = false;
     document.getElementById('calculatorDisplay').value = `${previousInput} ${currentOperation} ${currentInput}`;
 }
 
@@ -104,9 +108,10 @@ function operate() {
             return;
     }
 
-    currentInput = result.toString();
+    currentInput = Number(result.toPrecision(15)).toString();
     currentOperation = '';
     previousInput = '';
+    isResult = true;
 
     document.getElementById('calculatorDisplay').value = currentInput;
 }
@@ -128,8 +133,10 @@ function negate() {
 }
 
 function appendDot() {
-    if (currentInput === '') {
+    if (currentInput === '' || isResult === true) {
         currentInput = '0.';
+        
+        isResult = false;
     }
 
     if (!currentInput.includes('.')) currentInput += '.';
